@@ -20,9 +20,9 @@ const HeroSection = () => {
         </div>
         <div className="lg:w-1/2 flex justify-center lg:justify-end animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <img 
-            src="/lovable-uploads/e39a0f91-d185-4580-b4ae-bd14eb5d3e0f.png" 
-            alt="Owner affectionately holding their dog" 
-            className="rounded-xl shadow-2xl object-cover w-full max-w-md lg:max-w-lg aspect-[6/5]" // Added aspect ratio to maintain consistency
+            src="/lovable-uploads/36bfa705-a97d-4700-8d89-41703bc98066.png" 
+            alt="Woman affectionately hugging her dog" 
+            className="rounded-xl shadow-2xl object-cover w-full max-w-md lg:max-w-lg aspect-[6/5]"
           />
         </div>
       </div>

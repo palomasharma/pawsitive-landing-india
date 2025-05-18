@@ -10,8 +10,8 @@ const WhyHappyPawsSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 animate-fade-in-up">
             <img 
-              src="https://source.unsplash.com/600x500/?happy,cat,relaxing" 
-              alt="Relaxing cat" 
+              src="/lovable-uploads/844dac3d-ea79-4a2c-92c7-ca648cecbb23.png" 
+              alt="Veterinarian with a cat" 
               className="rounded-xl shadow-2xl object-cover w-full"
             />
           </div>
