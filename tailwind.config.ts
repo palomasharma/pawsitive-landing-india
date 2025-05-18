@@ -14,7 +14,11 @@ export default {
 			center: true,
 			padding: '2rem',
 			screens: {
-				'2xl': '1400px'
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+				'2xl': '1400px',
 			}
 		},
 		extend: {
@@ -25,24 +29,28 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: 'hsl(var(--primary))', // Main Purple
+					foreground: 'hsl(var(--primary-foreground))', // White
+          soft: 'hsl(var(--primary-soft))', // Soft Purple
 				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+				secondary: { // Using for other theme colors
+					DEFAULT: 'hsl(var(--secondary))', // Soft Pink
+					foreground: 'hsl(var(--secondary-foreground))', // Dark Purple
+          blue: 'hsl(var(--secondary-blue))', // Soft Blue
+          green: 'hsl(var(--secondary-green))', // Soft Green
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: 'hsl(var(--muted))', // Light Gray
+					foreground: 'hsl(var(--muted-foreground))' // Neutral Gray
 				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+				accent: { // Using for CTAs and highlights
+					DEFAULT: 'hsl(var(--accent))', // Bright Orange
+					foreground: 'hsl(var(--accent-foreground))', // White
+          blue: 'hsl(var(--accent-blue))', // Ocean Blue
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -52,6 +60,7 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        // Keep sidebar if needed, but not the focus for this landing page
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -68,6 +77,10 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -84,11 +97,22 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
 			}
 		}
 	},

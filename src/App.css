@@ -1,8 +1,12 @@
+
 #root {
+  /*
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  */
+  /* Keeping these for potential future use, but they are not applied globally now */
 }
 
 .logo {
