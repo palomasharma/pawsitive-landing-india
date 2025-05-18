@@ -1,3 +1,4 @@
+
 import React from 'react';
 import EmailCaptureForm from './EmailCaptureForm';
 import Logo from './icons/Logo';
@@ -18,11 +19,10 @@ const HeroSection = () => {
           <p className="text-sm text-muted-foreground mt-4">Join our waitlist and be the first to know when we launch!</p>
         </div>
         <div className="lg:w-1/2 flex justify-center lg:justify-end animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          {/* Using a placeholder image. Replace with your actual image. */}
           <img 
-            src="https://source.unsplash.com/600x500/?happy,dog,playing" 
-            alt="Happy dog playing" 
-            className="rounded-xl shadow-2xl object-cover w-full max-w-md lg:max-w-lg"
+            src="/lovable-uploads/e39a0f91-d185-4580-b4ae-bd14eb5d3e0f.png" 
+            alt="Owner affectionately holding their dog" 
+            className="rounded-xl shadow-2xl object-cover w-full max-w-md lg:max-w-lg aspect-[6/5]" // Added aspect ratio to maintain consistency
           />
         </div>
       </div>
