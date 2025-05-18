@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
 import Logo from './icons/Logo';
@@ -18,7 +17,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <Logo className="h-8" textColor="text-foreground"/>
+            <Logo className="h-12 w-auto"/>
             <p className="mt-2 text-sm text-muted-foreground">Making pet parenting joyful and simple.</p>
           </div>
           

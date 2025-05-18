@@ -1,4 +1,3 @@
-
 import React from 'react';
 import EmailCaptureForm from './EmailCaptureForm';
 import Logo from './icons/Logo';
@@ -8,7 +7,7 @@ const HeroSection = () => {
     <section className="bg-primary-soft/30 dark:bg-gray-900">
       <div className="container mx-auto px-6 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0 animate-fade-in-up">
-          <Logo className="h-12 mx-auto lg:mx-0 mb-4" textColor="text-primary" />
+          <Logo className="h-16 w-auto mx-auto lg:mx-0 mb-4" />
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-6">
             Pawsitively <span className="text-primary">Better Care</span> for Your Best Friend
           </h1>
