@@ -1,7 +1,17 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import LearnMoreForm from './LearnMoreForm'; // We'll create this next
 
 const WhyHappyPawsSection = () => {
   return (
@@ -25,9 +35,22 @@ const WhyHappyPawsSection = () => {
             <p className="text-lg text-muted-foreground mb-8">
               From finding pet-friendly spots in your city to understanding regional health concerns, we're building a platform with you and your furry family in mind.
             </p>
-            <Button size="lg" className="bg-accent hover:bg-orange-600 text-accent-foreground font-semibold py-3 h-12 text-base px-8 transition-colors duration-300 ease-in-out transform hover:scale-105">
-              Learn More Soon <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-accent hover:bg-orange-600 text-accent-foreground font-semibold py-3 h-12 text-base px-8 transition-colors duration-300 ease-in-out transform hover:scale-105">
+                  Sign Up to Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-background dark:bg-gray-800">
+                <DialogHeader>
+                  <DialogTitle className="text-foreground dark:text-white">Learn More About HappyPaws</DialogTitle>
+                  <DialogDescription className="text-muted-foreground dark:text-gray-300">
+                    We're excited to have you! Fill out the form below, and we'll keep you updated.
+                  </DialogDescription>
+                </DialogHeader>
+                <LearnMoreForm />
+              </DialogContent>
+            </Dialog>
              <p className="text-sm text-muted-foreground mt-3">(Full feature details coming with launch!)</p>
           </div>
         </div>
