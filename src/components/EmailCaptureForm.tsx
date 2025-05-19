@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client'; // Import the supabase client
 
 interface EmailCaptureFormProps {
   ctaText?: string;
@@ -30,11 +30,14 @@ const EmailCaptureForm: React.FC<EmailCaptureFormProps> = ({
       return;
     }
 
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    // Use supabaseUrl and supabaseKey from the imported client
+    const supabaseUrl = supabase.supabaseUrl;
+    const supabaseAnonKey = supabase.supabaseKey;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      console.error("Supabase URL or Anon Key is not configured in frontend environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY).");
+      // This check might be less critical now as these values come from a configured client
+      // but it's good for robustness if the client itself wasn't initialized (though it should be).
+      console.error("Supabase URL or Anon Key is not available from the Supabase client.");
       toast({
         title: "Configuration Error",
         description: "Unable to connect to backend. Please check configuration.",
@@ -72,7 +75,7 @@ const EmailCaptureForm: React.FC<EmailCaptureFormProps> = ({
       toast({
         title: "Success!",
         description: `Thank you for joining! We'll keep you updated at ${email}.`,
-        className: "bg-secondary-green text-foreground", // This was existing, kept as is
+        className: "bg-secondary-green text-foreground",
       });
       setEmail('');
     } catch (error) {
