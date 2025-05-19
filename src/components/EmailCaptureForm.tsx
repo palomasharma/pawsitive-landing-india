@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client'; // Import the supabase client
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '@/integrations/supabase/client'; // Import constants
 
 interface EmailCaptureFormProps {
   ctaText?: string;
@@ -30,14 +31,12 @@ const EmailCaptureForm: React.FC<EmailCaptureFormProps> = ({
       return;
     }
 
-    // Use supabaseUrl and supabaseKey from the imported client
-    const supabaseUrl = supabase.supabaseUrl;
-    const supabaseAnonKey = supabase.supabaseKey;
+    // Use SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY from the imported client constants
+    const supabaseUrl = SUPABASE_URL;
+    const supabaseAnonKey = SUPABASE_PUBLISHABLE_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      // This check might be less critical now as these values come from a configured client
-      // but it's good for robustness if the client itself wasn't initialized (though it should be).
-      console.error("Supabase URL or Anon Key is not available from the Supabase client.");
+      console.error("Supabase URL or Anon Key is not available from the Supabase client configuration.");
       toast({
         title: "Configuration Error",
         description: "Unable to connect to backend. Please check configuration.",
