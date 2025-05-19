@@ -19,7 +19,7 @@ const EmailCaptureForm: React.FC<EmailCaptureFormProps> = ({
   const [email, setEmail] = useState('');
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       toast({
@@ -29,14 +29,60 @@ const EmailCaptureForm: React.FC<EmailCaptureFormProps> = ({
       });
       return;
     }
-    // Here you would typically send the email to your backend
-    console.log("Email submitted:", email);
-    toast({
-      title: "Success!",
-      description: `Thank you for joining! We'll keep you updated on ${email}.`,
-      className: "bg-secondary-green text-foreground",
-    });
-    setEmail('');
+
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error("Supabase URL or Anon Key is not configured in frontend environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY).");
+      toast({
+        title: "Configuration Error",
+        description: "Unable to connect to backend. Please check configuration.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // The name of your Edge Function
+    const functionName = 'submit-waitlist-email';
+    const functionUrl = `${supabaseUrl}/functions/v1/${functionName}`;
+
+    try {
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': supabaseAnonKey, // Supabase Edge Functions expect the anon key via apikey header
+          'Authorization': `Bearer ${supabaseAnonKey}`, // Standard for Supabase
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        toast({
+          title: "Submission Failed",
+          description: result.error || "An error occurred. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Success!",
+        description: `Thank you for joining! We'll keep you updated at ${email}.`,
+        className: "bg-secondary-green text-foreground", // This was existing, kept as is
+      });
+      setEmail('');
+    } catch (error) {
+      console.error("Error submitting email:", error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred while submitting your email. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
