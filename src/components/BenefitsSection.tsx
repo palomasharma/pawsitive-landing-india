@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShieldCheck, CalendarDays, MessageSquareText, Users, PlusCircle } from 'lucide-react';
+import { ShieldCheck, CalendarDays, MessageSquareText, Users, PlusCircle, Activity } from 'lucide-react'; // Added Activity icon
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const benefits = [
@@ -39,6 +39,13 @@ const benefits = [
     color: "text-red-500",
     bgColor: "bg-red-100",
   },
+  {
+    icon: Activity, // New Health Tracker benefit
+    title: "Health Tracker",
+    description: "Monitor your pet's activity levels, food intake, and health metrics easily.",
+    color: "text-purple-500", // Example color
+    bgColor: "bg-purple-100", // Example background color
+  },
 ];
 
 const BenefitsSection = () => {
@@ -72,3 +79,4 @@ const BenefitsSection = () => {
 };
 
 export default BenefitsSection;
+
